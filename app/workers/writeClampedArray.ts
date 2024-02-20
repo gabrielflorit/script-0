@@ -69,5 +69,6 @@ onmessage = function (event: {
   state = update(state);
   draw(state);
 
+  // @ts-expect-error TS doesn't know this is the web worker postMessage
   postMessage({ clampedArray, state }, [clampedArray.buffer]);
 };
