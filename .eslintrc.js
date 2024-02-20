@@ -18,6 +18,7 @@ module.exports = {
   rules: {
     'prefer-const': 'off',
   },
+  ignorePatterns: ['public/workers/*'],
   overrides: [
     // ts files
     {
