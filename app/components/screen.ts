@@ -25,7 +25,7 @@ export default class ScreenComponent extends Component<ScreenSignature> {
   timer = task(async () => {
     while (this.shouldPlay) {
       this.sendMessage();
-      await timeout(1000;
+      await timeout(1000);
     }
   });
 
