@@ -1,9 +1,9 @@
-import { action } from '@ember/object';
 import Component from '@glimmer/component';
+import { tracked } from '@glimmer/tracking';
 
-interface ButtonTestSignature {
+interface EditorSignature {
   // The arguments accepted by the component
-  Args: {};
+  Args: { code: string };
   // Any blocks yielded by the component
   Blocks: {
     default: [];
@@ -12,9 +12,4 @@ interface ButtonTestSignature {
   Element: null;
 }
 
-export default class ButtonTestComponent extends Component<ButtonTestSignature> {
-  @action
-  clickHandler() {
-    console.log('a click handler');
-  }
-}
+export default class EditorComponent extends Component<EditorSignature> {}

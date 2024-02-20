@@ -3,22 +3,22 @@ import { setupRenderingTest } from 'script-0/tests/helpers';
 import { render } from '@ember/test-helpers';
 import { hbs } from 'ember-cli-htmlbars';
 
-module('Integration | Component | button-test', function (hooks) {
+module('Integration | Component | canvas', function (hooks) {
   setupRenderingTest(hooks);
 
   test('it renders', async function (assert) {
     // Set any properties with this.set('myProperty', 'value');
     // Handle any actions with this.set('myAction', function(val) { ... });
 
-    await render(hbs`<ButtonTest />`);
+    await render(hbs`<Canvas />`);
 
     assert.dom().hasText('');
 
     // Template block usage:
     await render(hbs`
-      <ButtonTest>
+      <Canvas>
         template block text
-      </ButtonTest>
+      </Canvas>
     `);
 
     assert.dom().hasText('template block text');

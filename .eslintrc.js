@@ -15,7 +15,9 @@ module.exports = {
   env: {
     browser: true,
   },
-  rules: {},
+  rules: {
+    'prefer-const': 'off',
+  },
   overrides: [
     // ts files
     {
@@ -24,7 +26,9 @@ module.exports = {
         'plugin:@typescript-eslint/eslint-recommended',
         'plugin:@typescript-eslint/recommended',
       ],
-      rules: {},
+      rules: {
+        'prefer-const': 'off',
+      },
     },
     // node files
     {

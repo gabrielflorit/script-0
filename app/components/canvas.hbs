@@ -1,0 +1,8 @@
+<canvas
+  {{did-update this.onUpdate @clampedArray}}
+  width={{@width}}
+  height={{@height}}
+  style={{html-safe
+    (concat "width: " this.styleWidth "px; height: " this.styleHeight "px")
+  }}
+/>
