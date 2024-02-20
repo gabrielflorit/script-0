@@ -1,5 +1,4 @@
 import Component from '@glimmer/component';
-import { tracked } from '@glimmer/tracking';
 
 interface EditorSignature {
   // The arguments accepted by the component

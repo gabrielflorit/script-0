@@ -30,6 +30,7 @@ onmessage = function (event: {
     drawLine(x1, y1, x2, y2, setPixel, color);
   }
 
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   function rectFill(
     x: number,
     y: number,
@@ -40,6 +41,7 @@ onmessage = function (event: {
     drawRectFill(x, y, width, height, color, line);
   }
 
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   function circFill(x: number, y: number, radius: number, color = 1) {
     drawCircle(
       Math.floor(x),
@@ -53,7 +55,9 @@ onmessage = function (event: {
   }
 
   let init = () => ({});
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   let update = (_state: object) => ({});
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   let draw = (_state: object) => {};
 
   eval(code);
