@@ -9,9 +9,10 @@ onmessage = function (event: {
     code: string;
     state: object;
     runInit: boolean;
+    isClicked: boolean;
   };
 }) {
-  let { width, height, code, state, runInit } = event.data;
+  let { width, height, code, state, runInit, isClicked } = event.data;
 
   let arrayBuffer = new ArrayBuffer(width * height * 4);
   let clampedArray = new Uint8ClampedArray(arrayBuffer);
@@ -54,19 +55,19 @@ onmessage = function (event: {
     );
   }
 
-  let init = () => ({});
+  let init = {};
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  let update = (_state: object) => ({});
+  let update = (state: object, isClicked: boolean) => ({});
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  let draw = (_state: object) => {};
+  let draw = (state: object) => {};
 
   eval(code);
 
   if (runInit) {
-    state = init();
+    state = { ...init };
   }
 
-  state = update(state);
+  state = update(state, isClicked);
   draw(state);
 
   // @ts-expect-error TS doesn't know this is the web worker postMessage

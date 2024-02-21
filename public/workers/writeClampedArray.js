@@ -123,7 +123,7 @@
       init_drawRectFill();
       init_drawCircle();
       onmessage = function(event) {
-        let { width, height, code, state, runInit } = event.data;
+        let { width, height, code, state, runInit, isClicked } = event.data;
         let arrayBuffer = new ArrayBuffer(width * height * 4);
         let clampedArray = new Uint8ClampedArray(arrayBuffer);
         function setPixel(x, y, color) {
@@ -153,15 +153,15 @@
             false
           );
         }
-        let init = () => ({});
-        let update = (_state) => ({});
-        let draw = (_state) => {
+        let init = {};
+        let update = (state2, isClicked2) => ({});
+        let draw = (state2) => {
         };
         eval(code);
         if (runInit) {
-          state = init();
+          state = { ...init };
         }
-        state = update(state);
+        state = update(state, isClicked);
         draw(state);
         postMessage({ clampedArray, state }, [clampedArray.buffer]);
       };

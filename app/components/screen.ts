@@ -15,6 +15,7 @@ export default class ScreenComponent extends Component<ScreenSignature> {
   pixelSize = 5;
   gameState = {};
   prevCode = '';
+  isClicked = false;
   @tracked clampedArray: Uint8ClampedArray | undefined = undefined;
 
   constructor(owner: unknown, args: ScreenSignature['Args']) {
@@ -25,9 +26,14 @@ export default class ScreenComponent extends Component<ScreenSignature> {
   timer = task(async () => {
     while (this.shouldPlay) {
       this.sendMessage();
-      await timeout(1000);
+      await timeout(1000 / 30);
     }
   });
+
+  @action
+  onClick() {
+    this.isClicked = true;
+  }
 
   @action
   sendMessage() {
@@ -37,9 +43,8 @@ export default class ScreenComponent extends Component<ScreenSignature> {
       code: this.args.code,
       state: this.gameState,
       runInit: this.prevCode !== this.args.code,
+      isClicked: this.isClicked,
     });
-
-    this.prevCode = this.args.code;
 
     this.worker.onmessage = ({
       data,
@@ -53,6 +58,8 @@ export default class ScreenComponent extends Component<ScreenSignature> {
 
       this.clampedArray = clampedArray;
       this.gameState = state;
+      this.prevCode = this.args.code;
+      this.isClicked = false;
     };
   }
 }
